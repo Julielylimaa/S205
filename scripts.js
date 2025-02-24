@@ -60,10 +60,6 @@ function reservarArmario() {
   dataEntrega.setDate(dataEntrega.getDate() + 1);
   armarioEmprestado.dataEntrega = dataEntrega.toLocaleString("pt-BR");
 
-  // let dataEntrega = new Date(dataHora);
-  // dataEntrega.setHours(dataEntrega.getHours() + 24);
-  // armarioEmprestado.dataEntrega = dataEntrega;
-
   // Impmimimos uma mensagem de reserva para o usuário.
   document.getElementById(
     "resultado"
