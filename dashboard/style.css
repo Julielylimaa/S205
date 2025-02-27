@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-size: 20px;
+}
+
+header {
+  position: relative;
+  padding: 16px;
+  display: flex;
+  justify-content: space-around;
+  background-color: #fffbb0;
+}
+
+.icon-header {
+  width: 60px;
+  height: 50px;
+  background-color: palegreen;
+}
+
+.logo {
+  width: 200px;
+  height: 50px;
+  background-color: blue;
+}
+
+main {
+  display: grid;
+  grid-template-rows: auto;
+  gap: 16px;
+}
+
+main > * {
+  padding: 16px;
+}
+
+.mensagens {
+  background-color: pink;
+}
+
+.notification {
+  padding: 10px 0 10px 20px;
+}
+
+.aulas {
+  background-color: #9afd9a;
+}
+
+.aulas > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 16px;
+  margin: 16px 0;
+  height: 80px;
+  border: 1px solid #000000;
+}
+
+.noticias {
+  background-color: #f7b9ff;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
