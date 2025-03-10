@@ -1,8 +1,25 @@
+:root {
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --color-background: #f8f9fa;
+  --color-text: #212529;
+  --color-message-bg: #ffffff;
+  --color-message-border: #e0e0e0;
+  --color-course-bg: #ffffff;
+  --color-course-border: #e0e0e0;
+  --color-news-bg: #ffffff;
+  --color-news-text: #000;
+  --color-header-bg: #065cbe;
+}
+
 * {
   margin: 0;
   padding: 0;
+  font-family: "Arimo", sans-serif;
 }
-
+body {
+  background-color: var(--color-background);
+}
 p {
   font-size: 20px;
 }
@@ -11,58 +28,108 @@ header {
   position: relative;
   padding: 16px;
   display: flex;
-  justify-content: space-around;
-  background-color: #fffbb0;
-}
-
-.icon-header {
-  width: 60px;
-  height: 50px;
-  background-color: palegreen;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background-color: var(--color-header-bg);
 }
 
 .logo {
-  width: 200px;
+  width: 150px;
   height: 50px;
-  background-color: blue;
+}
+.icon {
+  cursor: pointer;
 }
 
+.theme-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.theme-menu button {
+  display: block;
+  margin-bottom: 5px;
+  padding: 8px 12px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
 main {
   display: grid;
   grid-template-rows: auto;
   gap: 16px;
+  color: var(--color-text);
 }
 
 main > * {
   padding: 16px;
 }
 
-.mensagens {
-  background-color: pink;
+.mensagens * {
+  padding: 2px;
 }
 
-.notification {
-  padding: 10px 0 10px 20px;
+.mensagens,
+.notification,
+.aulas,
+.noticias {
+  background-color: var(--color-message-bg);
+  margin: 0 16px;
 }
 
-.aulas {
-  background-color: #9afd9a;
-}
-
-.aulas > div {
+.notification p {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  gap: 16px;
+}
+
+.aula-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0 16px;
   margin: 16px 0;
   height: 80px;
   border: 1px solid #000000;
 }
+.aula-container h2 {
+  font-size: 20px;
+}
+.aula-container p {
+  font-size: 16px;
+}
 
 .noticias {
-  background-color: #f7b9ff;
   height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: end;
+}
+
+.dark-theme {
+  --color-background: #333;
+  --color-text: #eee;
+  --color-message-bg: #444;
+  --color-course-bg: #444;
+  --color-news-bg: #444;
+  --color-news-text: #fff;
+  --color-header-bg: #222;
+}
+
+.light-theme {
+  --color-background: #f8f9fa;
+  --color-text: #212529;
+  --color-message-bg: #ffffff;
+  --color-course-bg: #ffffff;
+  --color-news-bg: #ffffff;
+  --color-news-text: #ffffff;
+  --color-header-bg: #065cbe;
 }
