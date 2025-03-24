@@ -59,11 +59,13 @@ const eventos = [
   },
 ];
 
-const carousel = document.getElementById("carousel");
+const carousel = document.querySelector(".carousel");
 
-eventos.forEach((event) => {
-  const slide = document.createElement("div");
-  slide.innerHTML = `
+function createCards() {
+  eventos.forEach((event) => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.innerHTML = `
                 <img src="${event.image}" alt="${event.title}">
                 <div class="info">
                     <h3>${event.title}</h3>
@@ -71,5 +73,52 @@ eventos.forEach((event) => {
                     <p><span class="icon material-icons-outlined">event</span> ${event.date} às ${event.time} <span class="material-icons-outlined icon">pin_drop</span> ${event.location}</p>
                 </div>
             `;
-  carousel.appendChild(slide);
+    carousel.appendChild(card);
+  });
+}
+
+let index = 0;
+function nextCard() {
+  index = (index + 1) % eventos.length;
+  updateCarousel();
+}
+
+function prevCard() {
+  index = (index - 1 + eventos.length) % eventos.length;
+  updateCarousel();
+}
+
+function updateCarousel() {
+  carousel.style.transform = `translateX(-${index * 100}%)`;
+}
+
+document.getElementById("nextBtn").addEventListener("click", nextCard);
+document.getElementById("prevBtn").addEventListener("click", prevCard);
+
+let intervalId;
+
+function startAutoSlide() {
+  intervalId = setInterval(nextCard, 5000);
+}
+
+function stopAutoSlide() {
+  clearInterval(intervalId);
+}
+
+let startX;
+carousel.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+carousel.addEventListener("touchend", (e) => {
+  let endX = e.changedTouches[0].clientX;
+  if (startX - endX > 50) nextCard();
+  if (endX - startX > 50) prevCard();
+});
+
+createCards();
+startAutoSlide();
+
+document.querySelectorAll(".card").forEach((card) => {
+  card.addEventListener("mouseenter", stopAutoSlide);
+  card.addEventListener("mouseleave", startAutoSlide);
 });

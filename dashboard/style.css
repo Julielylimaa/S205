@@ -148,7 +148,8 @@ p {
 }
 
 .carousel {
-  display: realtive; /* mudaremos para flex posteriormente */
+  display: flex; /* faça essa alteração */
+  transition: transform 0.5s ease-in-out; /* inclua a animação */
 }
 
 .card {
