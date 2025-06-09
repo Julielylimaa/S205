@@ -49,7 +49,6 @@ const produtosPadrao = [
 
 function carregarCompras() {
   const compras = JSON.parse(localStorage.getItem("comprasRealizadas")) || [];
-  const anuncios = JSON.parse(localStorage.getItem("anuncios")) || [];
 
   const listaCompras = document.getElementById("compras-lista");
   const comprasVazio = document.getElementById("compras-vazio");
@@ -69,17 +68,20 @@ function carregarCompras() {
   compras.forEach((compra) => {
     let produto = null;
 
-    // Procurar o produto nos anúncios criados
-    produto = anuncios.find((p) => p.id == compra.produtoId);
+    // Buscar APENAS nos produtos padrão da loja (produtos disponíveis para compra)
+    // NÃO buscar em anúncios, pois anúncios são produtos que o usuário está vendendo
+    produto = produtosPadrao.find((p) => p.id == compra.produtoId);
 
-    // Se não encontrou, procurar nos produtos padrão
-    if (!produto) {
-      produto = produtosPadrao.find((p) => p.id == compra.produtoId);
-    }
-
+    // Se encontrou o produto, criar o card da compra
     if (produto) {
       const compraDiv = criarCardCompra(compra, produto);
       listaCompras.appendChild(compraDiv);
+    } else {
+      // Se não encontrou nos produtos padrão, usar os dados salvos na própria compra
+      if (compra.produto) {
+        const compraDiv = criarCardCompra(compra, compra.produto);
+        listaCompras.appendChild(compraDiv);
+      }
     }
   });
 }
@@ -100,7 +102,11 @@ function criarCardCompra(compra, produto) {
                 <h3 class="compra-nome">${produto.nome}</h3>
                 <p class="compra-descricao">${produto.descricao}</p>
                 <div class="compra-meta">
-                    <span class="compra-preco">R$ ${produto.preco}</span>
+                    <span class="compra-preco">${
+                      typeof produto.preco === "string"
+                        ? produto.preco
+                        : `R$ ${produto.preco.toFixed(2).replace(".", ",")}`
+                    }</span>
                     <span class="compra-data">Comprado em: ${dataFormatada}</span>
                 </div>
                 <div class="compra-detalhes-pagamento">
@@ -111,7 +117,20 @@ function criarCardCompra(compra, produto) {
                       compra.metodoPagamento === "cartao" && compra.parcelas
                         ? `<span class="compra-parcelas">${
                             compra.parcelas
-                          }x de R$ ${produto.preco / compra.parcelas}</span>`
+                          }x de R$ ${(() => {
+                            const valorNumerico =
+                              typeof produto.preco === "string"
+                                ? parseFloat(
+                                    produto.preco
+                                      .replace("R$", "")
+                                      .replace(",", ".")
+                                      .trim()
+                                  )
+                                : produto.preco;
+                            return (valorNumerico / compra.parcelas)
+                              .toFixed(2)
+                              .replace(".", ",");
+                          })()}</span>`
                         : ""
                     }
                 </div>
