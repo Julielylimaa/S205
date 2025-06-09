@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>App Inatel</title>
+    <link rel="stylesheet" href="styles_store.css" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="styles_componente.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap"
       rel="stylesheet"
@@ -15,12 +14,11 @@
       rel="stylesheet"
     />
     <script src="script.js" defer></script>
+    <title>Inatel Store</title>
   </head>
   <body>
     <header>
-      <div class="icon material-icons-outlined" onclick="toggleThemeMenu()">
-        menu
-      </div>
+      <a class="back-link" href="index.html"> ← </a>
       <div class="logo">
         <svg
           class="svg_logo_inatel"
@@ -36,45 +34,35 @@
       </div>
       <div class="icon material-icons-outlined">account_circle</div>
     </header>
-    <div class="theme-menu" id="themeMenu">
-      <button class="theme-light" onclick="setTheme('light-theme')">
-        Claro
-      </button>
-      <button class="theme-dark" onclick="setTheme('dark-theme')">
-        Escuro
-      </button>
-    </div>
     <main>
-      <div class="mensagens">
-        <h1>Olá, Raphael</h1>
-        <div class="notification">
-          <p>
-            <span class="icon material-icons-outlined">notifications</span>Você
-            possui um armário reservado com entrega para hoje...
-          </p>
-        </div>
-        <div class="notification">
-          <p>
-            <span class="icon material-icons-outlined">warning</span>Você possui
-            uma pendência no financeiro...
-          </p>
-        </div>
-      </div>
-      <aulas-component id="componente"></aulas-component>
-      <script src="script_componente.js"></script>
-
-      <div class="carousel-container">
-        <div class="carousel"></div>
-        <button id="prevBtn">❮</button>
-        <button id="nextBtn">❯</button>
-      </div>
-
-      <a class="loja-container" href="store.html">
+    
+    
+    <a class="anuncio-container" href="criar_produto.html">
         <div>
-          <h2>🛒 Loja Virtual</h2>
-          <p>Compre, venda ou anuncie produtos dentro da faculdade</p>
+          <h3>➕ Criar anúncio</h3>
+          <p>Anúncie seu produto aqui.</p>
         </div>
       </a>
+
+      <a class="anuncio-container" href="anuncios.html">
+        <div>
+          <h3>✔️ Meus anúncios</h3>
+          <p>Verifique o status dos seus anúncios aqui.</p>
+        </div>
+      </a>
+
+      <a class="anuncio-container" href="minhas_compras.html">
+        <div>
+          <h3>🛒 Minhas compras</h3>
+          <p>Acompanhe suas compras realizadas.</p>
+        </div>
+      </a>
+    </div>
+    <div class="product-grid" id="grid-produtos"></div>
+    <script src="script_store.js" defer></script>
+
+    
+    
     </main>
   </body>
 </html>

@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>App Inatel</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="styles_componente.css" />
+    <link rel="stylesheet" href="styles_store.css" />
+    <link rel="stylesheet" href="styles_compras.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap"
       rel="stylesheet"
@@ -14,13 +14,11 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet"
     />
-    <script src="script.js" defer></script>
+    <title>Minhas Compras - Inatel Store</title>
   </head>
   <body>
     <header>
-      <div class="icon material-icons-outlined" onclick="toggleThemeMenu()">
-        menu
-      </div>
+      <a class="back-link" href="store.html"> ← </a>
       <div class="logo">
         <svg
           class="svg_logo_inatel"
@@ -36,45 +34,23 @@
       </div>
       <div class="icon material-icons-outlined">account_circle</div>
     </header>
-    <div class="theme-menu" id="themeMenu">
-      <button class="theme-light" onclick="setTheme('light-theme')">
-        Claro
-      </button>
-      <button class="theme-dark" onclick="setTheme('dark-theme')">
-        Escuro
-      </button>
-    </div>
+
     <main>
-      <div class="mensagens">
-        <h1>Olá, Raphael</h1>
-        <div class="notification">
-          <p>
-            <span class="icon material-icons-outlined">notifications</span>Você
-            possui um armário reservado com entrega para hoje...
-          </p>
+      <div class="compras-container">
+        <h1 class="compras-titulo">Minhas Compras</h1>
+        <div id="compras-lista" class="compras-lista">
+          <!-- Compras serão carregadas aqui pelo JavaScript -->
         </div>
-        <div class="notification">
+        <div id="compras-vazio" class="compras-vazio" style="display: none">
+          <h3>Nenhuma compra realizada</h3>
           <p>
-            <span class="icon material-icons-outlined">warning</span>Você possui
-            uma pendência no financeiro...
+            Você ainda não realizou nenhuma compra.
+            <a href="store.html">Explore nossos produtos!</a>
           </p>
         </div>
       </div>
-      <aulas-component id="componente"></aulas-component>
-      <script src="script_componente.js"></script>
-
-      <div class="carousel-container">
-        <div class="carousel"></div>
-        <button id="prevBtn">❮</button>
-        <button id="nextBtn">❯</button>
-      </div>
-
-      <a class="loja-container" href="store.html">
-        <div>
-          <h2>🛒 Loja Virtual</h2>
-          <p>Compre, venda ou anuncie produtos dentro da faculdade</p>
-        </div>
-      </a>
     </main>
+
+    <script src="script_minhas_compras.js"></script>
   </body>
 </html>

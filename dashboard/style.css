@@ -16,6 +16,7 @@
   margin: 0;
   padding: 0;
   font-family: "Arimo", sans-serif;
+  text-decoration: none;
 }
 body {
   background-color: var(--color-background);
@@ -32,6 +33,7 @@ header {
   align-items: center;
   color: white;
   background-color: var(--color-header-bg);
+  margin-bottom: 15px;
 }
 
 .logo {
@@ -65,7 +67,7 @@ header {
 main {
   display: grid;
   grid-template-rows: auto;
-  gap: 16px;
+  gap: 10px;
   color: var(--color-text);
 }
 
@@ -94,22 +96,6 @@ main > * {
   align-items: center;
   font-size: 16px;
   gap: 16px;
-}
-
-.aula-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
-  margin: 16px 0;
-  height: 80px;
-  border: 1px solid #000000;
-}
-.aula-container h2 {
-  font-size: 20px;
-}
-.aula-container p {
-  font-size: 16px;
 }
 
 .noticias {
@@ -146,10 +132,10 @@ p {
 .carousel-container {
   position: relative;
   overflow: hidden;
-  background-color: white;
   border-radius: 10px;
   margin: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-background);
 }
 
 .carousel {
@@ -182,7 +168,8 @@ p {
   color: var(--color-primary);
 }
 
-button {
+#prevBtn,
+#nextBtn {
   position: absolute;
   top: 30%;
   transform: translateY(-50%);
@@ -199,6 +186,33 @@ button {
 }
 #nextBtn {
   right: 10px;
+}
+
+.loja-container {
+  position: relative;
+  overflow: hidden;
+  margin: 20px;
+  padding: 16px;
+  background-color: var(--color-background);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.loja-container:hover {
+  transform: scale(1.02);
+}
+
+.loja-container h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.4rem;
+  color: var(--color-text);
+}
+
+.loja-container p {
+  margin: 0;
+  color: #666;
 }
 
 .dark-theme {

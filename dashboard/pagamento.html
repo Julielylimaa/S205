@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>App Inatel</title>
+    <title>Pagamento - Inatel Store</title>
+    <link rel="stylesheet" href="styles_store.css" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="styles_componente.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap"
       rel="stylesheet"
@@ -14,13 +14,10 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet"
     />
-    <script src="script.js" defer></script>
   </head>
   <body>
     <header>
-      <div class="icon material-icons-outlined" onclick="toggleThemeMenu()">
-        menu
-      </div>
+      <a class="back-link" href="store.html"> ← </a>
       <div class="logo">
         <svg
           class="svg_logo_inatel"
@@ -36,45 +33,68 @@
       </div>
       <div class="icon material-icons-outlined">account_circle</div>
     </header>
-    <div class="theme-menu" id="themeMenu">
-      <button class="theme-light" onclick="setTheme('light-theme')">
-        Claro
-      </button>
-      <button class="theme-dark" onclick="setTheme('dark-theme')">
-        Escuro
-      </button>
-    </div>
     <main>
-      <div class="mensagens">
-        <h1>Olá, Raphael</h1>
-        <div class="notification">
-          <p>
-            <span class="icon material-icons-outlined">notifications</span>Você
-            possui um armário reservado com entrega para hoje...
-          </p>
-        </div>
-        <div class="notification">
-          <p>
-            <span class="icon material-icons-outlined">warning</span>Você possui
-            uma pendência no financeiro...
-          </p>
-        </div>
-      </div>
-      <aulas-component id="componente"></aulas-component>
-      <script src="script_componente.js"></script>
+      <div class="payment-container">
+        <h1>Finalizar Compra</h1>
 
-      <div class="carousel-container">
-        <div class="carousel"></div>
-        <button id="prevBtn">❮</button>
-        <button id="nextBtn">❯</button>
-      </div>
-
-      <a class="loja-container" href="store.html">
-        <div>
-          <h2>🛒 Loja Virtual</h2>
-          <p>Compre, venda ou anuncie produtos dentro da faculdade</p>
+        <div class="product-summary" id="product-summary">
+          <!-- Produto será carregado aqui pelo JavaScript -->
         </div>
-      </a>
+
+        <div class="payment-methods">
+          <h2>Forma de Pagamento</h2>
+
+          <div class="payment-options">
+            <div class="payment-option" data-method="cartao">
+              <input
+                type="radio"
+                id="cartao"
+                name="payment"
+                value="cartao"
+                checked
+              />
+              <label for="cartao">
+                <div class="payment-icon">💳</div>
+                <div class="payment-info">
+                  <h3>Cartão de Crédito</h3>
+                  <p>Parcelamento em até 12x</p>
+                </div>
+              </label>
+            </div>
+
+            <div class="payment-option" data-method="pix">
+              <input type="radio" id="pix" name="payment" value="pix" />
+              <label for="pix">
+                <div class="payment-icon">📱</div>
+                <div class="payment-info">
+                  <h3>PIX</h3>
+                  <p>Aprovação instantânea</p>
+                </div>
+              </label>
+            </div>
+
+            <div class="payment-option" data-method="boleto">
+              <input type="radio" id="boleto" name="payment" value="boleto" />
+              <label for="boleto">
+                <div class="payment-icon">🧾</div>
+                <div class="payment-info">
+                  <h3>Boleto Bancário</h3>
+                  <p>Vencimento em 3 dias</p>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="payment-details" id="payment-details">
+          <!-- Detalhes do pagamento aparecerão aqui -->
+        </div>
+
+        <button class="finalize-button" onclick="finalizarCompra()">
+          Finalizar Compra
+        </button>
+      </div>
     </main>
+    <script src="script_pagamento.js"></script>
   </body>
 </html>
